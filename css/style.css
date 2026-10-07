@@ -1,0 +1,14 @@
+@charset "UTF-8";
+:root{
+
+    --cor-principal: #2563EB;
+    --cor-sidebar: #111827;
+    --cor-fundo: #F3F4F6;
+    --cor-cards: #FFFFFF;
+    --cor-sucesso: #16A34A;
+    --cor-alerta: #DC2626;
+    --cor-atenção: #F59E0B;
+    --cor-texto: #1F2937;
+    --fonte: Arial, Helvetica, sans-serif;
+
+}
