@@ -1,12 +1,179 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>StockPro | Controle de Estoque</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+    <div class="container">
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <h1>StockPro</h1>
+                <p>Controle de estoque</p>
+
+            </div>
+
+            <nav class="menu">
+
+                <a href="index.html" class="ativo">Dashboard</a>
+
+                <a href="pages/produtos.html">Produtos</a>
+
+                <a href="pages/categorias.html">Categorias</a>
+                
+                <a href="pages/fornecedores.html">Fornecedores</a>
+
+                <a href="pages/fornecedores.html">Movimentações</a>
+
+                <a href="pages/relatorios.html">Relatorios</a>
+
+            </nav>
+
+        </aside>
+
+        <main class="conteudo">
+
+            <header class="cabecalho">
+
+                <div>
+
+                    <h2>Dashboard</h2>
+                    <p>Visão geral do seu estoque</p>
+
+                </div>
+
+                <section class="cards">
+
+                    <div class="card">
+                        <h3>Itens em estoque</h3>
+                        <strong>1.245</strong>
+                    </div>
+                    <div class="card">
+                        <h3>Estoque baixo</h3>
+                        <strong>8</strong>
+                    </div>
+                    <div class="card">
+                        <h3>Fornecedores</h3>
+                        <strong>25</strong>
+                    </div>
+
+                </section>
+
+                <section class="dashboard-grid">
+
+                    <div class="painel">
+
+                        <div class="painel-header">
+
+                            <h3>Produtos em estoque abaixo</h3>
+                            <a href="pages/produtos.html">Ver todos</a>
+
+                        </div>
+
+                        <div class="tabela-container">
+
+                            <table>
+
+                                <thead>
+                                    <tr>
+                                        <th>Produto</th>
+                                        <th>Estoque</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    <tr>
+                                        <td>Teclado mecanico</td>
+                                        <td>3</td>
+                                        <td><span class="status-baixo">Baixo</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Mouse gamer</td>
+                                        <td>2</td>
+                                        <td><span class="status-baixo">Baixo</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Monitor 24"</td>
+                                        <td>4</td>
+                                        <td><span class="status-baixo">Baixo</span></td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                    <div class="painel">
+
+                        <div class="painel-header">
+                            <h3>Ultimas movimentações</h3>
+                            <a href="pages/movimentacoes.html">Ver todas</a>
+                        </div>
+
+                        <div class="tabela-container">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+                                        <th>Produto</th>
+                                        <th>Tipo</th>
+                                        <th>Quantidade</th>
+                                    </tr>
+
+                                </thead>
+
+                                <tbody>
+
+                                    <tr>
+                                        <td>Teclado mecanico</td>
+                                        <td><sapan class="status-entrada">Entrada</sapan></td>
+                                        <td>+10</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Mouse gamer</td>
+                                        <td><span class="status-saida">Saida</span></td>
+                                        <td>-5</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Monitor 24"</td>
+                                        <td><sapan class="status-entrada">Entrada</sapan></td>
+                                        <td>+8</td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </header>
+
+        </main>
+
+    </div>
+    
     <script src="script.js"></script>
+
 </body>
 </html>
