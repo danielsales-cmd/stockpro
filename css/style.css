@@ -101,6 +101,7 @@
     padding: 25px;
     border-radius: 10px;
     border: 1px solid var(--borda);
+    border-left: 4px solid var(--cor-principal);
 }
 
 .card h3{
