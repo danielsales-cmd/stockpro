@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StockPro | Produtos</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <h1>StockPro</h1>
+                <p>Controle de estoque</p>
+
+            </div>
+
+            <nav class="menu">
+
+                <a href="../index.html">Dashboard</a>
+                <a href="produtos.html">Produtos</a>
+                <a href="categorias.html">Categorias</a>
+                <a href="fornecedores.html">Fornecedores</a>
+                <a href="movimentacoes.html">Movimentações</a>
+                <a href="relatorios.html">Relatorios</a>
+
+            </nav>
+
+        </aside>
+
+        <main class="conteudo">
+
+            <header>
+
+                <h2>Produtos</h2>
+                <p>Gerencie os produtos do seu estoque</p>
+
+            </header>
+
+            <section class="acoes-produtos">
+
+                <input type="search" id="buscar-produto" placeholder="Buscar produto ...">
+                <button type="button" id="btn-adicionar"> Adicionar produto</button>
+
+            </section>
+
+            <section class="painel" id="formulario-produto" hidden>
+
+                <div class="painel-header">
+
+                    <h3>Adicionar produto</h3>
+
+                </div>
+
+                <form id="form-produto">
+
+                    <div class="campo">
+
+                        <label for="nome-produto">Nome do produto</label>
+                        <input type="text" id="nome-produto" required>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="categoria-produto">Categoria</label>
+                        <input type="text" id="categoria-produto" required>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="quantidade-produto">Quantidade</label>
+                        <input type="number" id="quantidade-produto" min="0" required>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="preco-produto">Preço</label>
+                        <input type="number" id="preco-produto" min="0" step="0.01" required>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="estoque-minimo">Estoque mínimo</label>
+                        <input type="number" id="estoque-minimo" min="0" required>
+
+                    </div>
+
+                    <button type="submit">Salvar produto</button>
+
+                </form>
+
+            </section>
+
+            <section class="painel">
+
+                <div class="painel-header">
+
+                    <h3>Lista de produtos</h3>
+
+                </div>
+
+                <div class="tabela-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Proddutos</th>
+                                <th>Categorias</th>
+                                <th>Quantidade</th>
+                                <th>Preço</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>Teclado mecânico</td>
+                                <td>Periféricos</td>
+                                <td>12</td>
+                                <td>R$ 150,00</td>
+                                <td><span class="status-entrada">Disponivel</span></td>
+                                <td></td>
+
+                            </tr>
+
+                               <tr>
+
+                                <td>Mouse gamer</td>
+                                <td>Periféricos</td>
+                                <td>3</td>
+                                <td>R$ 90,00</td>
+                                <td><span class="status-baixo">Estoque baixo</span></td>
+                                <td></td>
+
+                            </tr>
+
+                               <tr>
+
+                                <td>Monitor 24"</td>
+                                <td>Monitores</td>
+                                <td>8</td>
+                                <td>R$ 750,00</td>
+                                <td><span class="status-entrada">Disponivel</span></td>
+                                <td></td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/produtos.js"></script>
+
+</body>
+
+</html>

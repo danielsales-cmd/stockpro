@@ -175,6 +175,78 @@
     color: var(--cor-perigo);
 }
 
+.acoes-produtos{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.acoes-produtos input{
+    flex: 1;
+    max-width: 400px;
+    padding: 12px 15px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.acoes-produtos button{
+    padding: 12px 18px;
+    background-color: var(--cor-principal);
+    color: var(--cor-card);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.campo{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo label{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.campo input{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    font-family: var(--fonte);
+    font-size: 14px;
+}
+
+#formulario-produto{
+    margin-bottom: 25px;
+}
+
+#formulario-produto[hiden]{
+    display: none;
+}
+
+#form-produto{
+    display: grid;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#form-produto button{
+    padding: 12px 18px;
+    background-color: var(--cor-principal);
+    color: var(--cor-card);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
 table{
     width: 100%;
     border-collapse: collapse;
