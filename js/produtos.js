@@ -3,6 +3,9 @@ const botaoAdicionar = document.querySelector("#btn-adicionar");
 const formularioProduto = document.querySelector("#formulario-produto");
 const formProduto = document.querySelector("#form-produto");
 const tabelaProdutos = document.querySelector("tbody");
+const totalProdutos = document.querySelector("#total-produtos");
+const produtosEstoqueBaixo = document.querySelector("#produtos-estoque-baixo");
+const valorTotalEstoque = document.querySelector("#valor-total-estoque");
 
 const tituloFormulario = document.querySelector("#titulo-formulario");
 const botaoSalvar = document.querySelector("#btn-salvar");
@@ -154,9 +157,29 @@ function carregarProdutos() {
 
     produtos.forEach((produto) => {
         const linha = criarLinhaProduto(produto);
-
         tabelaProdutos.appendChild(linha);
     });
+
+    // Atualizar o total de produtos cadastrados
+    totalProdutos.textContent = produtos.length;
+
+     // Contar produtos com estoque baixo
+    const quantidadeEstoqueBaixo = produtos.filter((produto) => {
+        return produto.quantidade <= produto.estoqueMinimo;
+    }).length;
+
+    produtosEstoqueBaixo.textContent = quantidadeEstoqueBaixo;
+
+    // Calcular o valor total do estoque
+    const valorTotal = produtos.reduce((total, produto) => {
+        return total + produto.quantidade * produto.preco;
+    }, 0);
+
+    valorTotalEstoque.textContent = valorTotal.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+
 }
 
 // Carregar tabela ao abrir a página
