@@ -4,7 +4,13 @@ const formularioProduto = document.querySelector("#formulario-produto");
 const formProduto = document.querySelector("#form-produto");
 const tabelaProdutos = document.querySelector("tbody");
 
+const tituloFormulario = document.querySelector("#titulo-formulario");
+const botaoSalvar = document.querySelector("#btn-salvar");
+const botaoCancelar = document.querySelector("#btn-cancelar");
+
 const chaveProdutos = "stockpro_produtos";
+
+let produtoEmEdicao = null;
 
 // Carregar produtos salvos
 let produtos = JSON.parse(localStorage.getItem(chaveProdutos));
@@ -35,7 +41,10 @@ if (!Array.isArray(produtos) || produtos.length === 0) {
         }
     ];
 
-    localStorage.setItem(chaveProdutos, JSON.stringify(produtos));
+    localStorage.setItem(
+        chaveProdutos,
+        JSON.stringify(produtos)
+    );
 }
 
 // Salvar produtos
@@ -46,22 +55,67 @@ function salvarProdutos() {
     );
 }
 
-// Criar botão de exclusão
-function adicionarBotaoExcluir(linha, produto) {
+// Resetar formulário
+function resetarFormulario() {
+    produtoEmEdicao = null;
+
+    formProduto.reset();
+
+    tituloFormulario.textContent = "Adicionar produto";
+    botaoSalvar.textContent = "Salvar produto";
+
+    formularioProduto.hidden = true;
+}
+
+// Criar botões de ação
+function adicionarBotoesAcao(linha, produto) {
     const colunaAcoes = linha.insertCell(-1);
+
+    // Botão Editar
+    const botaoEditar = document.createElement("button");
+
+    botaoEditar.type = "button";
+    botaoEditar.textContent = "Editar";
+
+    botaoEditar.addEventListener("click", () => {
+        produtoEmEdicao = produto;
+
+        document.querySelector("#nome-produto").value = produto.nome;
+        document.querySelector("#categoria-produto").value = produto.categoria;
+        document.querySelector("#quantidade-produto").value = produto.quantidade;
+        document.querySelector("#preco-produto").value = produto.preco;
+        document.querySelector("#estoque-minimo").value = produto.estoqueMinimo;
+
+        tituloFormulario.textContent = "Editar produto";
+        botaoSalvar.textContent = "Salvar alterações";
+
+        formularioProduto.hidden = false;
+    });
+
+    // Botão Excluir
     const botaoExcluir = document.createElement("button");
 
     botaoExcluir.type = "button";
     botaoExcluir.textContent = "Excluir";
 
-    colunaAcoes.appendChild(botaoExcluir);
-
     botaoExcluir.addEventListener("click", () => {
-        linha.remove();
+        const confirmar = confirm(
+            `Tem certeza que deseja excluir "${produto.nome}"?`
+        );
+
+        if (!confirmar) {
+            return;
+        }
 
         produtos = produtos.filter((item) => item !== produto);
+
         salvarProdutos();
+        carregarProdutos();
     });
+
+    // Adicionar os botões à tabela
+    colunaAcoes.appendChild(botaoEditar);
+    colunaAcoes.appendChild(botaoExcluir);
 }
 
 // Criar linha do produto
@@ -89,7 +143,7 @@ function criarLinhaProduto(produto) {
         </td>
     `;
 
-    adicionarBotaoExcluir(linha, produto);
+    adicionarBotoesAcao(linha, produto);
 
     return linha;
 }
@@ -100,35 +154,55 @@ function carregarProdutos() {
 
     produtos.forEach((produto) => {
         const linha = criarLinhaProduto(produto);
+
         tabelaProdutos.appendChild(linha);
     });
 }
 
+// Carregar tabela ao abrir a página
 carregarProdutos();
 
-// Buscar produtos
+// Pesquisar produtos
 campoBusca.addEventListener("input", () => {
     const busca = campoBusca.value.toLowerCase();
     const linhasProdutos = document.querySelectorAll("tbody tr");
 
     linhasProdutos.forEach((linha) => {
-        const nomeProduto = linha.textContent.toLowerCase();
+        const textoLinha = linha.textContent.toLowerCase();
 
-        linha.style.display = nomeProduto.includes(busca)
+        linha.style.display = textoLinha.includes(busca)
             ? ""
             : "none";
     });
 });
 
-// Mostrar ou esconder o formulário
+// Mostrar ou esconder formulário
 botaoAdicionar.addEventListener("click", () => {
+    if (!formularioProduto.hidden && produtoEmEdicao !== null) {
+        resetarFormulario();
+        return;
+    }
+
+    produtoEmEdicao = null;
+
+    formProduto.reset();
+
+    tituloFormulario.textContent = "Adicionar produto";
+    botaoSalvar.textContent = "Salvar produto";
+
     formularioProduto.hidden = !formularioProduto.hidden;
 });
 
-// Cadastrar produto
+// Cancelar cadastro ou edição
+botaoCancelar.addEventListener("click", () => {
+    resetarFormulario();
+});
+
+// Cadastrar ou editar produto
 formProduto.addEventListener("submit", (evento) => {
     evento.preventDefault();
 
+    // Ler os valores do formulário
     const nome = document.querySelector("#nome-produto").value.trim();
     const categoria = document.querySelector("#categoria-produto").value.trim();
 
@@ -144,6 +218,40 @@ formProduto.addEventListener("submit", (evento) => {
         document.querySelector("#estoque-minimo").value
     );
 
+    // Validar nome e categoria
+    if (nome === "" || categoria === "") {
+        alert("Preencha o nome e a categoria do produto.");
+        return;
+    }
+
+    // Validar quantidade
+    if (
+        !Number.isInteger(quantidade) ||
+        quantidade < 0
+    ) {
+        alert("A quantidade deve ser um número inteiro igual ou maior que zero.");
+        return;
+    }
+
+    // Validar preço
+    if (
+        !Number.isFinite(preco) ||
+        preco < 0
+    ) {
+        alert("O preço deve ser um número válido igual ou maior que zero.");
+        return;
+    }
+
+    // Validar estoque mínimo
+    if (
+        !Number.isInteger(estoqueMinimo) ||
+        estoqueMinimo < 0
+    ) {
+        alert("O estoque mínimo deve ser um número inteiro igual ou maior que zero.");
+        return;
+    }
+
+    // Criar objeto do produto
     const novoProduto = {
         nome,
         categoria,
@@ -152,12 +260,25 @@ formProduto.addEventListener("submit", (evento) => {
         estoqueMinimo
     };
 
-    produtos.push(novoProduto);
+    // Atualizar produto existente ou cadastrar novo
+    if (produtoEmEdicao !== null) {
+        const indice = produtos.indexOf(produtoEmEdicao);
+
+        if (indice !== -1) {
+            produtos[indice] = novoProduto;
+        } else {
+            alert("Não foi possível encontrar o produto para editar.");
+            resetarFormulario();
+            return;
+        }
+    } else {
+        produtos.push(novoProduto);
+    }
+
+    // Salvar e atualizar a tabela
     salvarProdutos();
+    carregarProdutos();
 
-    const novaLinha = criarLinhaProduto(novoProduto);
-    tabelaProdutos.appendChild(novaLinha);
-
-    formProduto.reset();
-    formularioProduto.hidden = true;
+    // Limpar e fechar o formulário
+    resetarFormulario();
 });
