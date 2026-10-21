@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimentações | StockPro</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <h1>StockPro</h1>
+
+                <p>Gestão de estoque</p>
+
+            </div>
+
+            <nav class="menu">
+
+                <a href="../index.html">Dashboard</a>
+                <a href="produtos.html">Produtos</a>
+                <a href="categorias.html">Categorias</a>
+                <a href="fornecedores.html">Fornecedores</a>
+                <a href="movimentacoes.html">Movimentações</a>
+                <a href="relatorios.html">Relatorios</a>
+
+            </nav>
+
+        </aside>
+
+        <main class="conteudo">
+
+            <header class="cabecalho">
+
+                <h2>Movimentações de estoque </h2>
+                <p>Registre e acompanhe as entradas e saidas de produtos </p>
+
+            </header>
+
+            <section class="painel painel-movimentacao">
+
+                <div class="painel-header">
+
+                    <h3>Registrar movimentação</h3>
+
+                </div>
+
+                <form id="form-movimentacao">
+
+                    <div class="campo">
+
+                        <label for="produto-movimentacao">Produto</label>
+                        <select id="produto-movimentacao" required>
+                            <option value="">Selecione um produto</option>
+                        </select>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="tipo-movimentacao">Tipo de movimentação</label>
+                        <select id="tipo-movimentacao" required>
+                            <option value="entrada">Entrada</option>
+                            <option value="saida">Saída</option>
+                        </select>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="quantidade-movimentacao">Quantidade</label>
+                        <input
+                            type="number"
+                            id="quantidade-movimentacao"
+                            min="1"
+                            step="1"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="motivo-movimentacao">Motivo</label>
+                        <input
+                            type="text"
+                            id="motivo-movimentacao"
+                            maxlength="150"
+                            placeholder="Ex.: compra, venda ou devolução"
+                            required
+                        >
+
+                    </div>
+
+                    <button type="submit">Registrar movimentação</button>
+
+                </form>
+
+            </section>
+
+            <section class="painel painel-historico">
+
+                <div class="painel-header">
+
+                    <h3>Historico de movimentações</h3>
+
+                </div>
+
+                <div class="tabela-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Data</th>
+                                <th>Produto</th>
+                                <th>Tipo</th>
+                                <th>Quantidade</th>
+                                <th>Motivo</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="historico-movimentacoes"></tbody>
+
+                    </table>
+
+                </div>
+
+                <p id="mensagem-historico" class="mensagem-vazia" hidden>Nenhuma movimentação registrada</p>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/movimentacoes.js"></script>
+
+</body>
+</html>

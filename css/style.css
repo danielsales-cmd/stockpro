@@ -245,6 +245,16 @@
     margin: 0;
 }
 
+.painel-movimentacao, .paiel-historico{
+    margin-bottom: 25px;
+}
+
+.mensagem-vazia{
+    margin-top: 15px;
+    color: var(--cor-texto-secundario);
+    font-size: 14px;
+}
+
 #formulario-produto{
     margin-bottom: 25px;
 }
@@ -267,6 +277,45 @@
     border-radius: 8px;
     font-size: 14px;
     cursor: pointer;
+}
+
+#form-movimentacao{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 20px;
+}
+
+#form-movimentacao select, #form-movimentacao input{
+    width: 100%;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background-color: var(--cor-card);
+    color: var(--cor-texto);
+    font-family: var(--fonte);
+    font-size: 14px;
+}
+
+#form-movimentacao select:focus, #form-movimentacao input:focus{
+    outline: 2px solid var(--cor-principal);
+    outline-offset: 1px;
+}
+
+#form-movimentacao button{
+    justify-self: start;
+    padding: 12px 18px;
+    background-color: var(--cor-principal);
+    color: var(--cor-card);
+    border: none;
+    border-radius: 10px;
+    font-family: var(--fonte);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#form-movimentacao button:hover{
+    filter: brightness(0.95);
 }
 
 table{
@@ -334,6 +383,14 @@ body{
     flex: 1;
     min-width: 120px;
     text-align: center;
+}
+
+#form-movimentacao {
+        grid-template-columns: 1fr;
+}
+
+#form-movimentacao button {
+        width: 100%;
 }
 
 }
