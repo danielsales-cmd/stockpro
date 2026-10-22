@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockPro | Fornecedores</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/fornecedores.css">
+</head>
+<body>
+    
+    <div class="container">
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <h1>StockPro</h1>
+                <p>Controle de estoque</p>
+
+            </div>
+
+            <nav class="menu">
+
+                <a href="../index.html">Dashboard</a>
+                <a href="produtos.html">Produtos</a>
+                <a href="categorias.html">Categorias</a>
+                <a href="fornecedores.html">Fornecedores</a>
+                <a href="movimentacoes.html">Movimentações</a>
+                <a href="relatorios.html">Relatorios</a>
+
+            </nav>
+
+        </aside>
+
+        <main class="conteudo">
+
+            <header class="cabecalho">
+
+                <h2>Fornecedores</h2>
+                <p>Cadastre e gerencie seus fornecedores</p>
+
+            </header>
+
+            <section class="fornecedores-resumo">
+
+                <div class="fornecedor-indicador">
+
+                    <span>Total de fornecedores</span>
+                    <strong id="total-fornecedores">0</strong>
+
+                </div>
+
+            </section>
+
+            <section class="fornecedores-painel">
+
+                <div class="fornecedores-titulo">
+
+                    <div>
+
+                        <h3 id="titulo-formulario">Cadastrar fornecedor</h3>
+                        <p>Preencha os dados abaixo.</p>
+
+                    </div>
+
+                </div>
+
+                <form id="form-fornecedor">
+
+                    <input type="hidden" id="fornecedor-id">
+
+                    <div class="fornecedor-form-grid">
+
+                        <div class="fornecedor-campo">
+
+                            <label for="nome">Nome do responsavel</label>
+                            <input type="text" id="nome" maxlength="100" required placeholder="Ex.: João Silva">
+
+                        </div>
+
+                        <div class="fornecedor-campo">
+
+                            <label for="empresa">Nome da empresa</label>
+                            <input type="text" id="empresa" maxlength="120" required placeholder="EX.: Distribuidora central">
+
+                        </div>
+
+                        <div class="fornecedor-campo">
+
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" maxlength="25" required placeholder="Ex.: (35) 99999-9999">
+
+                        </div>
+
+                        <div class="fornecedor-campo">
+
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" maxlength="150" placeholder="empresa@email.com">
+
+                        </div>
+
+                        <div class="fornecedor-campo fornecedor-endereco">
+
+                            <label for="endereco">Endereço</label>
+                            <input type="text" id="endereco" maxlength="200" placeholder="Rua, número, cidade">
+
+                        </div>
+
+                    </div>
+
+                    <div class="fornecedores-acoes">
+
+                        <button type="submit" class="botao-fornecedor botao-salvar">
+
+                            Salvar fornecedor
+
+                        </button>
+
+                        <button type="button" id="btn-cancelar" class="botao-fornecedor botao-cancelar" hidden>
+
+                            Cancelar edição
+
+                        </button>
+
+                    </div>
+
+                    <p id="mensagem-fornecedor" role="status" aria-live="polite"></p>
+
+                </form>
+
+            </section>
+
+            <section class="fornecedores-painel">
+
+                <div class="fornecedores-titulo fornecedores-lista-titulo">
+
+                    <div>
+
+                        <h3>Fornecedores cadastrados</h3>
+                        <p>Consulte e gerencie seu registro.</p>
+
+                    </div>
+
+                    <input type="search" id="pesquisa-fornecedor" class="pesquisa-fornecedor" placeholder="Buscar fornecedor..." aria-label="Buscar fornecedor">
+
+                </div>
+
+                <div class="tabela-container">
+
+                    <table class="tabela-fornecedores">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Responsável</th>
+                                <th>Empresa</th>
+                                <th>Telefone</th>
+                                <th>E-mail</th>
+                                <th>Ações</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="tabela-fornecedores"></tbody>
+
+                    </table>
+
+                </div>
+
+                <p id="mensagem-tabela" class="mensagem-fornecedor-vazia">
+                    Nenhum fornecedor cadastrado.
+                </p>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/fornecedores.js"></script>
+
+</body>
+</html>
