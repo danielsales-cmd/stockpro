@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Relatórios | StockPro</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/relatorios.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>StockPro</h1>
+                <p>Controle de estoque</p>
+            </div>
+
+            <nav class="menu">
+                <a href="../index.html">Dashboard</a>
+                <a href="produtos.html">Produtos</a>
+                <a href="categorias.html">Categorias</a>
+                <a href="fornecedores.html">Fornecedores</a>
+                <a href="movimentacoes.html">Movimentações</a>
+                <a href="relatorios.html" class="ativo">Relatórios</a>
+            </nav>
+        </aside>
+
+        <main class="conteudo">
+
+            <header class="cabecalho">
+                <h2>Relatórios</h2>
+                <p>Consulte os dados e acompanhe a situação do seu estoque.</p>
+            </header>
+
+            <!-- AÇÕES -->
+
+            <section class="relatorios-acoes">
+                <div>
+                    <button type="button" id="btn-atualizar-relatorios">
+                        Atualizar dados
+                    </button>
+
+                    <button type="button" id="btn-imprimir-relatorios">
+                        Imprimir / Salvar PDF
+                    </button>
+
+                    <button type="button" id="btn-exportar-produtos">
+                        Exportar produtos CSV
+                    </button>
+                </div>
+
+                <p id="data-atualizacao"></p>
+            </section>
+
+            <!-- INDICADORES -->
+
+            <section class="relatorios-indicadores">
+
+                <article class="relatorio-card">
+                    <h3>Produtos cadastrados</h3>
+                    <p id="relatorio-total-produtos">0</p>
+                </article>
+
+                <article class="relatorio-card">
+                    <h3>Unidades em estoque</h3>
+                    <p id="relatorio-total-unidades">0</p>
+                </article>
+
+                <article class="relatorio-card">
+                    <h3>Produtos com estoque baixo</h3>
+                    <p id="relatorio-total-baixo">0</p>
+                </article>
+
+                <article class="relatorio-card">
+                    <h3>Valor estimado do estoque</h3>
+                    <p id="relatorio-valor-estoque">R$ 0,00</p>
+                </article>
+
+            </section>
+
+            <!-- RELATÓRIO DE PRODUTOS -->
+
+            <section class="painel painel-relatorio">
+
+                <div class="painel-header">
+                    <div>
+                        <h3>Relatório de produtos</h3>
+                        <p>Consulte quantidades, preços e valores por produto.</p>
+                    </div>
+                </div>
+
+                <div class="filtros-relatorios">
+                    <div class="campo">
+                        <label for="filtro-busca-produto">Pesquisar produto</label>
+                        <input
+                            type="search"
+                            id="filtro-busca-produto"
+                            placeholder="Digite o nome ou a categoria"
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="filtro-categoria-relatorio">Categoria</label>
+                        <select id="filtro-categoria-relatorio">
+                            <option value="">Todas as categorias</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="tabela-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Categoria</th>
+                                <th>Quantidade</th>
+                                <th>Preço unitário</th>
+                                <th>Valor total</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tabela-relatorio-produtos"></tbody>
+                    </table>
+                </div>
+
+                <p class="mensagem-relatorio" id="mensagem-produtos"></p>
+
+            </section>
+
+            <!-- RELATÓRIO DE ESTOQUE BAIXO -->
+
+            <section class="painel painel-relatorio">
+
+                <div class="painel-header">
+                    <div>
+                        <h3>Produtos com estoque baixo</h3>
+                        <p>Produtos cuja quantidade está no limite mínimo ou abaixo dele.</p>
+                    </div>
+                </div>
+
+                <div class="tabela-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Categoria</th>
+                                <th>Quantidade atual</th>
+                                <th>Estoque mínimo</th>
+                                <th>Quantidade para atingir o mínimo</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tabela-relatorio-estoque-baixo"></tbody>
+                    </table>
+                </div>
+
+                <p class="mensagem-relatorio" id="mensagem-estoque-baixo"></p>
+
+            </section>
+
+            <!-- HISTÓRICO DE MOVIMENTAÇÕES -->
+
+            <section class="painel painel-relatorio">
+
+                <div class="painel-header">
+                    <div>
+                        <h3>Histórico de movimentações</h3>
+                        <p>Consulte as entradas e saídas registradas no sistema.</p>
+                    </div>
+                </div>
+
+                <div class="filtros-relatorios">
+                    <div class="campo">
+                        <label for="filtro-tipo-movimentacao">Tipo de movimentação</label>
+                        <select id="filtro-tipo-movimentacao">
+                            <option value="">Todas</option>
+                            <option value="entrada">Entradas</option>
+                            <option value="saida">Saídas</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="filtro-busca-movimentacao">Pesquisar movimentação</label>
+                        <input
+                            type="search"
+                            id="filtro-busca-movimentacao"
+                            placeholder="Digite o nome do produto"
+                        >
+                    </div>
+                </div>
+
+                <div class="tabela-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Produto</th>
+                                <th>Tipo</th>
+                                <th>Quantidade</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tabela-relatorio-movimentacoes"></tbody>
+                    </table>
+                </div>
+
+                <p class="mensagem-relatorio" id="mensagem-movimentacoes"></p>
+
+            </section>
+
+            <footer class="rodape-relatorios">
+                <p>StockPro — Relatórios de controle de estoque</p>
+            </footer>
+
+        </main>
+    </div>
+
+    <script src="../js/relatorios.js"></script>
+</body>
+</html>

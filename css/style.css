@@ -214,7 +214,7 @@
     font-weight: 600;
 }
 
-.campo input{
+.campo input, select{
     width: 100%;
     padding: 12px;
     border: 1px solid var(--borda);
@@ -254,6 +254,50 @@
     color: var(--cor-texto-secundario);
     font-size: 14px;
 }
+
+.acoes-tabela {
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+.acoes-tabela button {
+padding: 5px 8px;
+border: 1px solid transparent;
+border-radius: 6px;
+font-family: var(--fonte);
+font-size: 13px;
+font-weight: 600;
+cursor: pointer;
+transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-editar {
+background-color: #eff6ff;
+color: #1d4ed8;
+border-color: #dbeafe !important;
+}
+
+.btn-editar {
+background-color: #dbeafe;
+border-color: #bfdbfe !important;
+}
+
+.btn-excluir {
+background-color: #fef2f2;
+color: #b91c1c;
+border-color: #fee2e2 !important;
+}
+
+.btn-excluir {
+background-color: #fee2e2;
+border-color: #fecaca !important;
+}
+
+.acoes-tabela button {
+outline: 2px solid var(--cor-principal);
+outline-offset: 2px;
+}   
 
 #formulario-produto{
     margin-bottom: 25px;
@@ -383,6 +427,15 @@ body{
     flex: 1;
     min-width: 120px;
     text-align: center;
+}
+
+.acoes-tabela {
+gap: 6px;
+}
+
+.acoes-tabela button {
+    padding: 7px 9px;
+    font-size: 12px;
 }
 
 #form-movimentacao {

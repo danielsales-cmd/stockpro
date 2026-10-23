@@ -1,0 +1,312 @@
+/* ========================================
+   AÇÕES DOS RELATÓRIOS
+======================================== */
+
+.relatorios-acoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.relatorios-acoes > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.relatorios-acoes button {
+    padding: 9px 13px;
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    background-color: var(--cor-card);
+    color: var(--cor-texto);
+    font-family: var(--fonte);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+#btn-atualizar-relatorios {
+    background-color: var(--cor-principal);
+    border-color: var(--cor-principal);
+    color: white;
+}
+
+#btn-atualizar-relatorios:hover {
+    background-color: #1d4ed8;
+}
+
+#btn-imprimir-relatorios:hover,
+#btn-exportar-produtos:hover {
+    background-color: var(--cor-fundo);
+    border-color: #cbd5e1;
+}
+
+#data-atualizacao {
+    color: var(--cor-texto-secundario);
+    font-size: 12px;
+}
+
+/* ========================================
+   INDICADORES
+======================================== */
+
+.relatorios-indicadores {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.relatorio-card {
+    min-width: 0;
+    padding: 22px;
+    background-color: var(--cor-card);
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    border-left: 4px solid var(--cor-principal);
+}
+
+.relatorio-card h3 {
+    margin-bottom: 12px;
+    color: var(--cor-texto-secundario);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.relatorio-card p {
+    color: var(--cor-texto);
+    font-size: 25px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+/* ========================================
+   PAINÉIS DOS RELATÓRIOS
+======================================== */
+
+.painel-relatorio {
+    margin-bottom: 25px;
+    min-width: 0;
+}
+
+.painel-relatorio .painel-header {
+    align-items: flex-start;
+}
+
+.painel-relatorio .painel-header h3 {
+    margin-bottom: 6px;
+}
+
+.painel-relatorio .painel-header p {
+    color: var(--cor-texto-secundario);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* ========================================
+   FILTROS
+======================================== */
+
+.filtros-relatorios {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.filtros-relatorios .campo {
+    min-width: 0;
+}
+
+.filtros-relatorios input,
+.filtros-relatorios select {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid var(--borda);
+    border-radius: 7px;
+    background-color: var(--cor-card);
+    color: var(--cor-texto);
+    font-family: var(--fonte);
+    font-size: 13px;
+}
+
+.filtros-relatorios input:focus,
+.filtros-relatorios select:focus {
+    outline: 2px solid var(--cor-principal);
+    outline-offset: 1px;
+}
+
+/* ========================================
+   TABELAS
+======================================== */
+
+.painel-relatorio .tabela-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.painel-relatorio table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.painel-relatorio th,
+.painel-relatorio td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--borda);
+    white-space: nowrap;
+}
+
+.painel-relatorio th {
+    background-color: #f9fafb;
+    color: var(--cor-texto-secundario);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.painel-relatorio td {
+    color: var(--cor-texto);
+    font-size: 13px;
+}
+
+.painel-relatorio tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ========================================
+   MENSAGENS
+======================================== */
+
+.mensagem-relatorio {
+    margin-top: 15px;
+    color: var(--cor-texto-secundario);
+    font-size: 13px;
+}
+
+.mensagem-relatorio:empty {
+    display: none;
+}
+
+/* ========================================
+   RODAPÉ
+======================================== */
+
+.rodape-relatorios {
+    padding: 15px 0;
+    color: var(--cor-texto-secundario);
+    font-size: 12px;
+    text-align: center;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 1100px) {
+    .relatorios-indicadores {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .relatorios-acoes {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .relatorios-acoes > div {
+        flex-direction: column;
+    }
+
+    .relatorios-acoes button {
+        width: 100%;
+    }
+
+    .relatorios-indicadores {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .relatorio-card {
+        padding: 18px;
+    }
+
+    .relatorio-card p {
+        font-size: 23px;
+    }
+
+    .filtros-relatorios {
+        grid-template-columns: 1fr;
+    }
+
+    .painel-relatorio {
+        padding: 15px;
+    }
+}
+
+/* ========================================
+   IMPRESSÃO E SALVAMENTO EM PDF
+======================================== */
+
+@media print {
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    .sidebar,
+    .relatorios-acoes,
+    .filtros-relatorios {
+        display: none !important;
+    }
+
+    .container {
+        display: block;
+        min-height: auto;
+    }
+
+    .conteudo {
+        padding: 0;
+    }
+
+    .cabecalho {
+        margin-bottom: 20px;
+    }
+
+    .relatorios-indicadores {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .relatorio-card,
+    .painel-relatorio {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #cccccc;
+    }
+
+    .painel-relatorio {
+        margin-bottom: 15px;
+    }
+
+    .painel-relatorio .tabela-container {
+        overflow: visible;
+    }
+
+    .painel-relatorio th,
+    .painel-relatorio td {
+        padding: 7px;
+        white-space: normal;
+    }
+
+    .rodape-relatorios {
+        display: none;
+    }
+}
