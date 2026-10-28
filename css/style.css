@@ -402,48 +402,220 @@ body{
 
 }
 
+/* ========================================
+   RESPONSIVIDADE DO STOCKPRO
+   ======================================== */
+
 @media (max-width: 600px) {
 
-.sidebar {
-    width: 100%;
-    min-height: auto;
-    padding: 20px;
-}
-
-.logo {
-    margin-bottom: 20px;
-    text-align: center;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #374151;
-}
-
-.menu {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.menu a {
-    flex: 1;
-    min-width: 120px;
-    text-align: center;
-}
-
-.acoes-tabela {
-gap: 6px;
-}
-
-.acoes-tabela button {
-    padding: 7px 9px;
-    font-size: 12px;
-}
-
-#form-movimentacao {
-        grid-template-columns: 1fr;
-}
-
-#form-movimentacao button {
+    /* Organização geral */
+    html,
+    body {
         width: 100%;
+        max-width: 100%;
+    }
+
+    .container {
+        flex-direction: column;
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* Menu superior no celular */
+    .sidebar {
+        width: 100%;
+        min-width: 0;
+        min-height: auto;
+        padding: 15px;
+    }
+
+    .logo {
+        text-align: center;
+        margin-bottom: 15px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #374151;
+    }
+
+    .logo h1 {
+        font-size: 23px;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 8px;
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+
+    .menu a {
+        flex: 0 0 auto;
+        min-width: auto;
+        white-space: nowrap;
+        text-align: center;
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    /* Conteúdo principal */
+    .conteudo {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        padding: 18px 14px;
+    }
+
+    .cabecalho {
+        margin-bottom: 22px;
+    }
+
+    .cabecalho h2 {
+        font-size: 23px;
+        overflow-wrap: anywhere;
+    }
+
+    .cabecalho p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    /* Cards do dashboard */
+    .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .card {
+        min-width: 0;
+        padding: 16px 12px;
+    }
+
+    .card h3 {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .card strong {
+        font-size: 21px;
+        overflow-wrap: anywhere;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+    }
+
+    .painel {
+        min-width: 0;
+        padding: 15px;
+    }
+
+    .painel-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    /* Indicadores de estoque */
+    .indicadores-estoque {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .card-indicador {
+        min-width: 0;
+        padding: 18px;
+    }
+
+    .card-indicador p {
+        font-size: 27px;
+        overflow-wrap: anywhere;
+    }
+
+    /* Formulários */
+    #form-produto {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #form-movimentacao {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #form-movimentacao button {
+        width: 100%;
+    }
+
+    .campo,
+    .campo input,
+    .campo select,
+    input,
+    select,
+    textarea {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    /* Barra de pesquisa e ações */
+    .acoes-produtos {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .acoes-produtos input {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .acoes-produtos button {
+        width: 100%;
+    }
+
+    /* Tabelas: rolagem apenas dentro da tabela */
+    .tabela-container {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tabela-container table {
+        min-width: 600px;
+    }
+
+    /* Botões de editar e excluir */
+    .acoes-tabela {
+        flex-wrap: nowrap;
+        gap: 6px;
+    }
+
+    .acoes-tabela button {
+        flex-shrink: 0;
+        padding: 7px 9px;
+        font-size: 12px;
+    }
+
 }
+
+/* Celulares com telas muito estreitas */
+@media (max-width: 380px) {
+
+    .conteudo {
+        padding: 15px 10px;
+    }
+
+    .cards {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .menu a {
+        padding: 9px 10px;
+        font-size: 12px;
+    }
 
 }
